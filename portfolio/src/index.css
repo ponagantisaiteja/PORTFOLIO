@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-primary: #050b18;
+  --bg-secondary: #0a1628;
+  --accent-violet: #8b5cf6;
+  --accent-cyan: #22d3ee;
+  --text-primary: #f1f5f9;
+  --text-muted: #94a3b8;
+  --glass-bg: rgba(255,255,255,0.04);
+  --glass-border: rgba(255,255,255,0.08);
+}
+
+* { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Glassmorphism */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+}
+
+.glass-hover:hover {
+  background: rgba(255,255,255,0.07);
+  border-color: rgba(139,92,246,0.4);
+  transition: all 0.3s ease;
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #8b5cf6 0%, #22d3ee 50%, #a78bfa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-warm {
+  background: linear-gradient(135deg, #f472b6 0%, #a78bfa 50%, #60a5fa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb { background: linear-gradient(#8b5cf6, #22d3ee); border-radius: 2px; }
+
+/* Particle canvas */
+#particles { position: fixed; top: 0; left: 0; z-index: 0; pointer-events: none; }
+
+/* Section reveal */
+.reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* Noise overlay */
+.noise::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  z-index: 9999;
+}
+
+/* Glow effects */
+.glow-violet { box-shadow: 0 0 30px rgba(139,92,246,0.3), 0 0 60px rgba(139,92,246,0.1); }
+.glow-cyan { box-shadow: 0 0 30px rgba(34,211,238,0.3), 0 0 60px rgba(34,211,238,0.1); }
+
+/* Nav link underline */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; left: 0;
+  width: 0; height: 1px;
+  background: linear-gradient(90deg, #8b5cf6, #22d3ee);
+  transition: width 0.3s ease;
+}
+.nav-link:hover::after { width: 100%; }
+
+/* Orbit animation */
+@keyframes orbit {
+  from { transform: rotate(0deg) translateX(140px) rotate(0deg); }
+  to { transform: rotate(360deg) translateX(140px) rotate(-360deg); }
+}
+
+.orbit-1 { animation: orbit 8s linear infinite; }
+.orbit-2 { animation: orbit 12s linear infinite reverse; }
+.orbit-3 { animation: orbit 16s linear infinite; }
+
+/* Typing cursor */
+.typing-cursor::after {
+  content: '|';
+  animation: blink 1s step-end infinite;
+}
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+/* Card shimmer */
+.shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.shimmer::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 60%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.04), transparent);
+  transition: left 0.6s ease;
+  z-index: 1;
+}
+.shimmer:hover::before { left: 150%; }
+
+/* Progress bar */
+@keyframes progressFill {
+  from { width: 0; }
+}
+
+.stat-bar { animation: progressFill 1.5s ease forwards; }
+
+/* Light mode overrides */
+.light body { --bg-primary: #f8fafc; --bg-secondary: #f1f5f9; --text-primary: #0f172a; --text-muted: #475569; --glass-bg: rgba(0,0,0,0.03); --glass-border: rgba(0,0,0,0.08); }

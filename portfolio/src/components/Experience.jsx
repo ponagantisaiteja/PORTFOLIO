@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Briefcase, Award, Star, Trophy, CheckCircle2, Calendar } from 'lucide-react';
 
+
 const experiences = [
   {
     role: 'MERN Stack Intern',

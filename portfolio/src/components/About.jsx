@@ -129,7 +129,7 @@ export default function About() {
                 <span className="font-display font-700 text-white">Career Vision</span>
               </div>
               <p className="text-slate-400 font-body leading-relaxed">
-                I aspire to become a full-stack engineer And Software Developer at an innovative product company, building scalable systems that impact millions of users. I'm focused on mastering distributed systems, cloud architecture, and delivering exceptional user experiences.
+                I aspire to become a Software Engineer at an innovative product company, building scalable full-stack applications and distributed systems that impact millions of users. I am focused on mastering cloud architecture and delivering exceptional user experiences.
               </p>
               <div className="mt-5 flex flex-wrap gap-2">
                 {['Full Stack', 'software developer', 'Java', 'DSA'].map((tag) => (
